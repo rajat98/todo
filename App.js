@@ -2,7 +2,9 @@ import React, {useState} from 'react';
 import {Alert, FlatList, Keyboard, StyleSheet, TouchableWithoutFeedback, View} from 'react-native';
 import Header from "./components/header";
 import TodoItem from "./components/todoItem";
-import AddTodo from "./components/addTodo"
+import AddTodo from "./components/addTodo";
+import  Sandbox from "./components/sandbox";
+
 export default function App() {
   const [todos, setTodos] = useState([
     {text: "Todo 1", key: 1},
@@ -25,6 +27,7 @@ export default function App() {
     })}
   }
   return (
+    // <Sandbox/>
     <TouchableWithoutFeedback onPress={()=>{
       Keyboard.dismiss();
       console.log('Dismissing keyboard');
@@ -38,7 +41,7 @@ export default function App() {
             <FlatList
                 data={todos}
                 renderItem={({item})=>(
-                <TodoItem item={item} pressHandler={pressHandler}/>
+                  <TodoItem item={item} pressHandler={pressHandler}/>
                 )}
             />
           </View>
@@ -47,16 +50,21 @@ export default function App() {
     </TouchableWithoutFeedback>
   );
 }
-
+//tip use backgroundColor to identify area spanned by view
+// adding flex1 to all nested containers helps them avoid overflowing
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
   },
   content:{
+    flex:1,
     padding: 40,
+    backgroundColor: '#ffffff',
   },
   list:{
+    flex: 1,
     marginTop: 20,
+    backgroundColor: '#ffffff',
   },
 });
